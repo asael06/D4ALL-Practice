@@ -1,0 +1,57 @@
+
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+body {
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.game {
+    width: 800px;
+    height: 400px;
+    border: 1px solid black;
+    background-image: url('../back.jpg');
+    position: relative;
+    background-size: 100% ;
+    animation: move 10s infinite linear reverse
+}
+
+.char {
+    width: 100px;
+    height: 100px;        
+    position: absolute;  
+    border: 1px solid black;
+    top: 50px;
+    left: 50px;
+    background-image: url('../mario.png');
+    background-position: 10px -180px;
+    transform: rotateY(180deg);
+    animation: walk .5s infinite step-start; 
+}
+
+.header {
+    display: flex;
+    width: 100%;
+    height: 100px;
+    justify-content: flex-end;
+    padding-right: 8em;
+}
+
+@keyframes move {    
+    to {
+        background-position:  800px;
+    }
+}
+
+@keyframes walk {
+    0% {background-position: 10px -180px;}
+    50% {background-position: 106px -180px;}    
+}
