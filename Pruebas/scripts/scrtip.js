@@ -2,7 +2,7 @@ var char = document.getElementById('char')
 var position = char.getBoundingClientRect()
 var topM = position.top
 var score = document.getElementById('score')
-var cont = 0
+var contScore = 0
 var mario = {
     y: topM,
     vy:0,
@@ -51,12 +51,12 @@ setInterval(function(){
 },1200/FPS)
 
 setInterval(() => {
-    score.innerHTML = cont++
-}, 500);
+    score.innerHTML = contScore += 1
+}, 50);
 
-function principal(){    gravedad()   
-    pintar()
-    
+function principal(){    
+    gravedad()   
+    pintar()    
 }
 
 function harder(){

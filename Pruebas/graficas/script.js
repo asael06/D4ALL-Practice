@@ -1,10 +1,8 @@
-var panel = document.getElementById("plano")
+var panel = document.getElementById("game")
 var position = panel.getBoundingClientRect()
 const x = panel.clientWidth
 const y = panel.clientHeight 
 var node
-
-console.log(x,y)
 
 function main(){    
     node = document.createElement("div")
@@ -14,8 +12,8 @@ function main(){
 
 var cont=0
 function move(nodo){    
-    if(cont ==  0) cont = panel.clientWidth - 20
-    nodo.style.top = `${100*(Math.cos(cont/50))+(y/2)}px`
+    if(cont ==  -100) cont = panel.clientWidth - 20
+    nodo.style.top = `${100*(Math.cos(cont/100))+(y/3)}px`
     nodo.style.left = `${cont--}px`
 }
 
@@ -26,7 +24,7 @@ function charMove(){
     if(nImage == 10) nImage = 1
 }
 
-var FPS = 100
+var FPS = 300
 setInterval(function(){
     move(node)    
 },1000/FPS)
