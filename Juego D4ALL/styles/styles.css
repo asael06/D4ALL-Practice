@@ -19,10 +19,10 @@ body {
     position: relative;
     background-image: url('/img/back.jpg');
     background-size: contain;
-    animation: fondo 5s infinite linear;
     overflow: hidden;
     display: flex;
     justify-content: flex-end;
+    animation: fondo 5s infinite linear;
 }
 
 .char {    

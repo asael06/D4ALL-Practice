@@ -33,10 +33,12 @@ function createEnemy(){
 }
 
 var contE = pnl.clientWidth - 20
+var velE = 30
+
 function moveEnemy(){    
     if(contE <= -100) contE = pnl.clientWidth - 20
     node.style.top = `${100*(Math.cos(contE/200))+(y/3)}px`
-    node.style.left = `${contE-=30}px`
+    node.style.left = `${contE-=velE}px`
 }
 
 document.addEventListener('keydown', e => {
@@ -101,36 +103,36 @@ function nodesX(a){
 }
 
 function nodesY(a,b){
-    if(a.getBoundingClientRect().top >= 260 && (b.getBoundingClientRect().top >= 193 && b.getBoundingClientRect().top <= 273))
+    if(a.getBoundingClientRect().top >= 350 && (b.getBoundingClientRect().top >= 300 && b.getBoundingClientRect().top <= 360))
         return true
     else return false
 }
 
 function scoreCounter(){
-    contScore += 100
-    score.innerHTML = 'score: '+contScore
+    contScore += 10
+    score.innerHTML = 'score: '+ contScore
 }
 
 var FPS = 10
-var interval = setInterval(function(){  
-    principal()
-    moveEnemy()  
-    scoreCounter()
-    if(nodesY(node,char))
-        if(nodesX(node))
-        {
-            pnl.style.animationPlayState = 'paused'
-            char.style.backgroundImage = `url(../img/Mario/5.png)`        
-            clearInterval(interval2)
-            clearInterval(interval)
-            mario.dead = true        
-        }    
-},1000/FPS)
-
-
 var interval2 = setInterval(() => {
     enemyAnimation()
     walking()   
+    if(contScore % 1000 == 0){        
+        var interval = setInterval(function(){  
+            principal()
+            moveEnemy()  
+            scoreCounter()
+            if(nodesY(node,char))
+                if(nodesX(node))
+                {
+                    pnl.style.animationPlayState = 'paused'
+                    char.style.backgroundImage = `url(../img/Mario/5.png)`        
+                    clearInterval(interval)
+                    clearInterval(interval2)
+                    mario.dead = true        
+                }    
+        },1000/(FPS++))
+    }
 }, 100);
 
 
