@@ -17,7 +17,7 @@ body {
     height: 400px;
     background-color: darkgray;
     position: relative;
-    background-image: url('/img/back.jpg');
+    background-image: url('../img/back.jpg');
     background-size: contain;
     overflow: hidden;
     display: flex;
@@ -52,6 +52,33 @@ body {
     margin-right: 3em;
     font-size: 1.3em;
     color: yellow;
+}
+
+.gameOver {
+    width: 400px;
+    height: 200px;
+    
+    position: absolute;
+    top: 25%;
+    right: 25%;
+    z-index: 20;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: silver;
+    border-radius: 20px;
+}
+
+.restart {
+    width: 100px;
+    height: 60px;    
+    background-image: url('../img/restart.png');
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-color: lightslategrey;
+    border-radius: 15px;
 }
 
 @keyframes fondo {

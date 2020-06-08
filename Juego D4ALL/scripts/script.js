@@ -76,17 +76,17 @@ function gravedad(){
 var step = 0
 function walking(){
     if(mario.saltando){
-        char.style.backgroundImage = `url(../img/Mario/3.png)`    
+        char.style.backgroundImage = `url(img/Mario/3.png)`    
     }else{
-        char.style.backgroundImage = `url(../img/Mario/${step++}.png)`    
-        char.style.backgroundImage = `url(../img/Mario/${step}.png)`
+        char.style.backgroundImage = `url(img/Mario/${step++}.png)`    
+        char.style.backgroundImage = `url(img/Mario/${step}.png)`
         if(step == 2)step = 0
     }
 }
 
 var enemyFPS = 1
 function enemyAnimation(){
-    node.style.backgroundImage = `url(../img/Koopa/${enemyFPS}.png) `    
+    node.style.backgroundImage = `url(img/Koopa/${enemyFPS}.png) `    
     enemyFPS++
     if(enemyFPS == 10) enemyFPS = 1
 }
@@ -94,6 +94,14 @@ function enemyAnimation(){
 function principal(){    
     gravedad()   
     pintar()    
+}
+
+function gameOver(){
+    var gameover = document.createElement("div")
+    gameover.className = 'gameOver'
+    pnl.appendChild(gameover)
+    gameover.innerHTML = '<h2>Game Over</h2><div class="restart" id="restart"></div>'
+    gameover.addEventListener('click',()=>{location.reload();})
 }
 
 function nodesX(a){
@@ -122,14 +130,15 @@ var interval2 = setInterval(() => {
             principal()
             moveEnemy()  
             scoreCounter()
+            if(mario.dead)gameOver() 
             if(nodesY(node,char))
                 if(nodesX(node))
                 {
                     pnl.style.animationPlayState = 'paused'
-                    char.style.backgroundImage = `url(../img/Mario/5.png)`        
+                    char.style.backgroundImage = `url(img/Mario/5.png)`        
                     clearInterval(interval)
-                    clearInterval(interval2)
-                    mario.dead = true        
+                    clearInterval(interval2)                       
+                    mario.dead = true    
                 }    
         },1000/(FPS++))
     }
